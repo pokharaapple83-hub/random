@@ -1,0 +1,818 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Hide Scrollbars */
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  body {
+    @apply bg-background text-foreground;
+    cursor: none; /* Hide default cursor */
+  }
+}
+
+/* Custom Yellow Circle Cursor */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: #f7dd0f;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out, scale 0.2s ease;
+  box-shadow: 0 0 15px rgba(247, 221, 15, 0.6), 0 0 30px rgba(247, 221, 15, 0.3);
+}
+
+/* Cursor hover effects for interactive elements */
+button:hover ~ body::after,
+a:hover ~ body::after,
+.cursor-hover:hover ~ body::after {
+  transform: translate(-50%, -50%) scale(1.5);
+  box-shadow: 0 0 25px rgba(247, 221, 15, 0.8), 0 0 50px rgba(247, 221, 15, 0.4);
+}
+
+/* Make sure interactive elements show pointer behavior */
+button,
+a,
+.cursor-pointer {
+  cursor: none !important;
+}
+
+@layer utilities {
+  /* Logo Theme Inversion */
+  .logo-adaptive {
+    transition: filter 0.3s ease;
+    filter: invert(1) brightness(1); /* Start inverted since logo is black on transparent */
+  }
+
+  .dark .logo-adaptive {
+    filter: invert(0) brightness(1); /* Don't invert in dark mode to show white */
+  }
+
+  /* Plus Jakarta Sans Typography */
+  .jakarta-title {
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  .jakarta-subtitle {
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.4;
+  }
+
+  .jakarta-body {
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+  }
+
+  .jakarta-light {
+    font-weight: 400;
+    letter-spacing: -0.008em;
+    line-height: 1.6;
+  }
+
+  /* Professional Typography */
+  .professional-title {
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  .professional-subtitle {
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.4;
+  }
+
+  .professional-body {
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+  }
+
+  /* Apple-style Typography with Plus Jakarta Sans */
+  .apple-title {
+    font-weight: 700;
+    letter-spacing: -0.022em;
+    line-height: 1.1;
+  }
+
+  .apple-subtitle {
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.4;
+  }
+
+  .apple-body {
+    font-weight: 400;
+    letter-spacing: -0.008em;
+    line-height: 1.5;
+  }
+
+  /* iOS 26 Style Glass Effects */
+  .ios-glass-nav {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 -1px 0 rgba(0, 0, 0, 0.05)
+      inset;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark .ios-glass-nav {
+    background: rgba(0, 0, 0, 0.15);
+    border-color: rgba(247, 221, 15, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(247, 221, 15, 0.1) inset, 0 -1px 0 rgba(0, 0, 0, 0.2) inset;
+  }
+
+  /* iOS 26 Style Glass Window */
+  .ios-glass-window {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(60px) saturate(200%);
+    -webkit-backdrop-filter: blur(60px) saturate(200%);
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.12), 0 8px 32px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 60px 64px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark .ios-glass-window {
+    background: rgba(0, 0, 0, 0.25);
+    border-color: rgba(247, 221, 15, 0.2);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4), 0 8px 32px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(247, 221, 15, 0.15) inset;
+  }
+
+  .ios-glass-window::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.02) 50%,
+      rgba(247, 221, 15, 0.05) 100%
+    );
+    border-radius: 40px;
+    pointer-events: none;
+    transition: all 0.4s ease;
+  }
+
+  .dark .ios-glass-window::before {
+    background: linear-gradient(
+      135deg,
+      rgba(247, 221, 15, 0.08) 0%,
+      rgba(0, 0, 0, 0.05) 50%,
+      rgba(247, 221, 15, 0.12) 100%
+    );
+  }
+
+  /* iOS 26 Style Glass Cards */
+  .ios-glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(30px) saturate(150%);
+    -webkit-backdrop-filter: blur(30px) saturate(150%);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark .ios-glass-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(247, 221, 15, 0.15);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3), 0 4px 16px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(247, 221, 15, 0.1) inset;
+  }
+
+  .ios-glass-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+    border-color: rgba(247, 221, 15, 0.3);
+  }
+
+  .dark .ios-glass-card:hover {
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.3), 0 1px 0 rgba(247, 221, 15, 0.15) inset;
+    border-color: rgba(247, 221, 15, 0.4);
+  }
+
+  /* iOS 26 Style Glass Buttons */
+  .ios-glass-button {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+  }
+
+  .ios-glass-button:hover {
+    background: rgba(247, 221, 15, 0.12);
+    border-color: rgba(247, 221, 15, 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(247, 221, 15, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
+  }
+
+  .dark .ios-glass-button {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(247, 221, 15, 0.2);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(247, 221, 15, 0.1) inset;
+  }
+
+  .dark .ios-glass-button:hover {
+    background: rgba(247, 221, 15, 0.15);
+    border-color: rgba(247, 221, 15, 0.4);
+    box-shadow: 0 8px 24px rgba(247, 221, 15, 0.3), 0 1px 0 rgba(247, 221, 15, 0.15) inset;
+  }
+
+  /* Dark Mode Toggle */
+  .dark-mode-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(247, 221, 15, 0.2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none !important;
+    transition: all 0.3s ease;
+  }
+
+  .dark-mode-toggle:hover {
+    background: rgba(247, 221, 15, 0.1);
+    border-color: rgba(247, 221, 15, 0.4);
+    transform: scale(1.05);
+  }
+
+  .dark .dark-mode-toggle {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(247, 221, 15, 0.3);
+  }
+
+  .dark .dark-mode-toggle:hover {
+    background: rgba(247, 221, 15, 0.2);
+    border-color: rgba(247, 221, 15, 0.5);
+  }
+
+  /* Navigation Icon Buttons */
+  .nav-icon-button {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(247, 221, 15, 0.2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: none !important;
+    transition: all 0.3s ease;
+  }
+
+  .nav-icon-button:hover {
+    background: rgba(247, 221, 15, 0.1);
+    border-color: rgba(247, 221, 15, 0.4);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(247, 221, 15, 0.3);
+  }
+
+  .dark .nav-icon-button {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(247, 221, 15, 0.3);
+  }
+
+  .dark .nav-icon-button:hover {
+    background: rgba(247, 221, 15, 0.2);
+    border-color: rgba(247, 221, 15, 0.5);
+    box-shadow: 0 0 15px rgba(247, 221, 15, 0.4);
+  }
+
+  /* DopeTech Golden Yellow/Black/White Buttons */
+  .dopetech-button-primary {
+    background: #f7dd0f;
+    color: #000000;
+    border-radius: 980px;
+    padding: 16px 32px;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.2;
+    transition: all 0.2s ease;
+    border: none;
+    cursor: none !important;
+    box-shadow: 0 4px 12px rgba(247, 221, 15, 0.3);
+  }
+
+  .dopetech-button-primary:hover {
+    background: #e6c60d;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(247, 221, 15, 0.4);
+  }
+
+  .dopetech-button-secondary {
+    background: transparent;
+    color: #f7dd0f;
+    border: 2px solid #f7dd0f;
+    border-radius: 980px;
+    padding: 14px 30px;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.2;
+    transition: all 0.2s ease;
+    cursor: none !important;
+  }
+
+  .dopetech-button-secondary:hover {
+    background: #f7dd0f;
+    color: #000000;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(247, 221, 15, 0.3);
+  }
+
+  .dopetech-button-white {
+    background: #ffffff;
+    color: #000000;
+    border-radius: 980px;
+    padding: 16px 32px;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.2;
+    transition: all 0.2s ease;
+    border: 2px solid #ffffff;
+    cursor: none !important;
+  }
+
+  .dopetech-button-white:hover {
+    background: transparent;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .dopetech-button-black {
+    background: #000000;
+    color: #ffffff;
+    border-radius: 980px;
+    padding: 16px 32px;
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.2;
+    transition: all 0.2s ease;
+    border: 2px solid #000000;
+    cursor: none !important;
+  }
+
+  .dopetech-button-black:hover {
+    background: #333333;
+    transform: translateY(-1px);
+  }
+
+  /* Bouncing Explore Button */
+  .bounce-explore {
+    animation: bounce-up-down 2s ease-in-out infinite;
+  }
+
+  /* DVD Bouncing Animation */
+  .dvd-bouncer {
+    position: absolute;
+    transition: none;
+    will-change: transform;
+  }
+
+  /* Round DVD Icons */
+  .dvd-icon-round {
+    border-radius: 50% !important;
+    transition: all 0.3s ease;
+  }
+
+  /* DopeTech Cards */
+  .dopetech-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    border: 2px solid rgba(247, 221, 15, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .dark .dopetech-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(247, 221, 15, 0.3);
+  }
+
+  .dopetech-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(247, 221, 15, 0.2);
+    border-color: rgba(247, 221, 15, 0.4);
+  }
+
+  .dopetech-card-dark {
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    border: 2px solid rgba(247, 221, 15, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .dark .dopetech-card-dark {
+    background: rgba(0, 0, 0, 0.7);
+    border-color: rgba(247, 221, 15, 0.4);
+  }
+
+  .dopetech-card-dark:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(247, 221, 15, 0.3);
+    border-color: rgba(247, 221, 15, 0.6);
+  }
+
+  /* Professional Glass Window */
+  .glass-window-professional {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(24px);
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 48px 56px;
+    transition: all 0.3s ease;
+  }
+
+  .dark .glass-window-professional {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(247, 221, 15, 0.2);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  }
+
+  .glass-window-professional::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(247, 221, 15, 0.08) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(247, 221, 15, 0.06) 100%
+    );
+    border-radius: 32px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .dark .glass-window-professional::before {
+    background: linear-gradient(
+      135deg,
+      rgba(247, 221, 15, 0.12) 0%,
+      rgba(0, 0, 0, 0.08) 50%,
+      rgba(247, 221, 15, 0.1) 100%
+    );
+  }
+
+  .glass-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* DopeTech Gradient Backgrounds */
+  .gradient-bg-golden {
+    background: linear-gradient(135deg, #f7dd0f 0%, #ffd700 100%);
+  }
+
+  .gradient-bg-black {
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+  }
+
+  .gradient-bg-white {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+  }
+
+  .dark .gradient-bg-white {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  }
+
+  .gradient-bg-golden-black {
+    background: linear-gradient(135deg, #f7dd0f 0%, #000000 100%);
+  }
+
+  .gradient-bg-black-golden {
+    background: linear-gradient(135deg, #000000 0%, #f7dd0f 100%);
+  }
+
+  .gradient-bg-light {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .dark .gradient-bg-light {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+  }
+
+  /* Product Showcase */
+  .product-showcase {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-float-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  /* Section Spacing with Enhanced Padding */
+  .apple-section {
+    padding: 100px 0;
+  }
+
+  .apple-hero {
+    padding: 140px 0;
+  }
+
+  /* Golden Glow Effect */
+  .golden-glow {
+    text-shadow: 0 0 10px rgba(247, 221, 15, 0.5);
+  }
+
+  .golden-glow-strong {
+    text-shadow: 0 0 20px rgba(247, 221, 15, 0.8), 0 0 40px rgba(247, 221, 15, 0.4);
+  }
+}
+
+/* Animations */
+@keyframes bounce-up-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.8s ease-out;
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 30s linear infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* DopeTech Navigation */
+.dopetech-nav {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(247, 221, 15, 0.2);
+  transition: all 0.3s ease;
+}
+
+.dark .dopetech-nav {
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom-color: rgba(247, 221, 15, 0.3);
+}
+
+.dopetech-nav-dark {
+  backdrop-filter: blur(20px);
+  background: rgba(0, 0, 0, 0.95);
+  border-bottom: 1px solid rgba(247, 221, 15, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .apple-hero {
+    padding: 100px 0;
+  }
+
+  .apple-section {
+    padding: 80px 0;
+  }
+
+  .glass-window-professional {
+    max-width: 90%;
+    padding: 40px 44px;
+  }
+
+  .ios-glass-window {
+    max-width: 90%;
+    padding: 48px 40px;
+  }
+
+  .dopetech-button-primary,
+  .dopetech-button-white,
+  .dopetech-button-black {
+    padding: 14px 28px;
+  }
+
+  .dopetech-button-secondary {
+    padding: 12px 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .apple-hero {
+    padding: 80px 0;
+  }
+
+  .apple-section {
+    padding: 60px 0;
+  }
+
+  .glass-window-professional {
+    padding: 32px 36px;
+  }
+
+  .ios-glass-window {
+    padding: 40px 32px;
+  }
+}
